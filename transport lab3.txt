@@ -1,0 +1,114 @@
+package transport;
+
+public abstract class Vehicle {
+	protected String id;
+	public Vehicle(String id)
+	{
+	System.out.println("Vehicle() constructor called");
+	}
+	public abstract void deliver(String item, String place);
+}
+package transport;
+
+public class Bicycle extends Vehicle {
+   public Bicycle(String id) {
+		//calls Vehicle constructor
+		super(id);
+		System.out.println("Bicycle() constructor called");
+		}
+		@Override
+		public void deliver(String item, String place) {
+		System.out.println("Delivering " + item + "to " + place + " by Bicycle.");
+	}
+}
+package transport;
+
+public class Ebike extends Bicycle{
+private int battery;
+public Ebike(String id, int battery) 
+{
+//first calls bicycle (which also calls vehicle)
+super(id);
+this.battery = battery;
+System.out.println("EBike() constructor called");
+}
+@Override
+public void deliver(String item, String place) {
+System.out.println("Checking battery: " + battery + "%");
+//call parent method using super
+super.deliver(item, place);
+}
+}
+package transport;
+//interface for cost calculation
+public interface IPayable {
+double cost(double distanceKm);
+}
+package transport;
+//interface for cost calculation
+public class Drone extends Vehicle implements IPayable {
+public Drone(String id) {
+super(id);//calls vehicle constructor
+System.out.println("Drone() constructor called");
+}
+@Override
+public void deliver(String item, String place) {
+//security check before flying
+if(!SecurityRules.canFly(place)){
+System.out.println("Delivery to " + place + " is blocked by security.");
+return;
+}
+System.out.println("Delivering " + item + "to " + place + " by Drone.");
+}
+@Override
+public double cost(double distanceKm) {
+return 20 * distanceKm;
+}
+}
+package transport;
+//final class cannot be extended
+public final class SecurityRules {
+private SecurityRules() {
+}
+//static method to check ifthe drone is allowed
+public static boolean canFly(String place) {
+if(place=="ExamCell")
+return false;
+else
+return true;
+}
+}
+
+package sourcecode;
+
+importtransport.Drone;
+importtransport.EBike;
+public class MainClass {
+public static void main(String[] args) {
+// 1) constructor chain: Vehicle -> Bicycle -> EBike
+EBike e = new EBike("EB-101", 50);
+e.deliver("Sandwich", "Library");
+// 2) abstract restriction (uncomment to see compile error)
+// Vehicle v = new Vehicle("V-1");
+// 3) interface + final rule check
+Drone d = new Drone("DR-1");
+d.deliver("Notes","ExamCell"); // blocked
+d.deliver("USB", "CSE Block"); // allowed
+
+// 4) Payable demo
+double bill = d.cost(5);
+System.out.println("Drone delivery cost: Rs." + bill);
+}
+}
+
+OUTPUT:
+Vehicle() constructor called
+Bicycle() constructor called
+EBike() constructor called
+Checking battery: 50%
+Delivering Sandwich to Library by Bicycle.
+Vehicle() constructor called
+Drone() constructor called
+Delivery to ExamCell is blocked by security.
+Delivering USB to CSE Block by Drone.
+Drone delivery cost: Rs.100.0
