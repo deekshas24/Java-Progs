@@ -1,0 +1,266 @@
+package library;
+
+public class Stack {
+
+ private int arr[];
+ private int top;
+ private int capacity;
+Stack(int size) {
+ capacity = size;
+ arr = new int[capacity];
+ top = -1;
+ } 
+Stack(int[] inputArr) {
+ capacity = inputArr.length;
+ arr = new int[capacity];
+ for (int i = 0; i < capacity; i++) {
+ arr[i] = inputArr[i];
+ }
+ top = capacity - 1;
+ }
+void push(int x) {
+ if (top >= capacity - 1) {
+ System.out.println("Stack is Overflow" + x);
+ return;
+ }
+ arr[++top] = x;
+ System.out.println("Pushed ele : " + x);
+ }
+ void push(int x, int y) {
+ push(x);
+ push(y);
+ } int pop() {
+ if (top == -1) { 
+System.out.println("Stack is Underflow");
+ return -1;
+ }
+ return arr[top--];
+ }
+ void pop(int n) {
+ if (n <= 0) {
+ System.out.println("Invalid no of ele to pop");
+ return;
+ } 
+for (int i = 0; i < n; i++) {
+ int val = pop();
+ if (val == -1) break;
+ System.out.println("Popped ele: " + val);
+ }
+ }
+ void display() {
+ if (top == -1) {
+ System.out.println("Stack is empty");
+ return;
+ }
+ System.out.println("Stack contents (Top to Bottom):");
+ for (int i = top; i >= 0; i--) {
+ System.out.println(arr[i]);
+ } 
+ void display(int n) {
+ if (top == -1) {
+ System.out.println("Stack is empty");
+ return;
+ }
+ if (n <= 0) {
+ System.out.println("Invalid no the elements");
+ return;
+ }
+ System.out.println("Top " + n + " ele:");
+ for (int i = top; i >= 0 && i > top - n; i--) {
+ System.out.println(arr[i]);
+ }
+ }
+
+package library;
+
+import java.util.Scanner;
+
+public class LibraryStackDemo {
+
+ public static void main(String[] args) {
+
+ Scanner sc = new Scanner(System.in);
+ Stack st = null;
+
+ System.out.println("Choose how to initialize stack");
+ System.out.println("1.Empty stack with size");
+ System.out.println("2. Stack initialized with array");
+ int choice = sc.nextInt();
+
+ if (choice == 1) {
+ System.out.print("Enter the size of stack ");
+ int size = sc.nextInt();
+ st = new Stack(size);
+
+ }
+ else if (choice == 2)
+ {
+ System.out.print("Enter no of elements: ");
+ int n = sc.nextInt();
+ int arr[] = new int[n];
+ System.out.println("Enter theelements ");
+ for (int i = 0; i < n; i++) {
+ arr[i] = sc.nextInt();
+ }
+ st = new Stack(arr);
+ }
+ else
+ {
+ System.out.println("Invalid choice.");
+ return;
+ }
+int option;
+ do {
+ System.out.println("\n Stack Menu ");
+ System.out.println("1. Push one element");
+ System.out.println("2. Push two elements");
+ System.out.println("3. Pop one element");
+ System.out.println("4. Pop multiple elements");
+ System.out.println("5. Display full stack"); 
+ System.out.println("6. Display top n elements");
+ System.out.println("7. Exit");
+ System.out.print("Enter choice: ");
+ option = sc.nextInt();
+ switch(option) {
+ case 1:
+ System.out.print("Enter the element: ");
+ int val = sc.nextInt();
+ st.push(val);
+ break;
+ case 2:
+ System.out.print("Enter thetwo elements: ");
+ int v1 = sc.nextInt();
+ int v2 = sc.nextInt();
+ st.push(v1, v2);
+ break;
+ case 3:
+ int popped = st.pop();
+ if (popped != -1)
+ System.out.println("Popped: " + popped);
+ break;
+ case 4:
+ System.out.print("Enter no of elements to pop: ");
+ int n = sc.nextInt();
+ st.pop(n);
+break;
+
+ case 5:
+ st.display();
+ break;
+
+ case 6:
+ System.out.print("Enter no of top elements: ");
+ int topN = sc.nextInt();
+ st.display(topN);
+ break;
+
+ case 7:
+ System.out.println("Exiting..");
+ break;
+
+ default:
+ System.out.println("Invalid choice");
+ }
+ } while(option != 7); 
+}
+}
+
+
+OUTPUT:
+Choose how to initialize stack
+1. Empty stack with size
+2. Stack initialized with array
+
+1
+Enter the size of stack 3
+
+ Stack Menu 
+1. Push one element
+2. Push two elements
+3. Pop one element
+4. Pop multiple elements
+5. Display full stack
+6. Display top n elements
+7. Exit
+Enter choice: 1
+Enter the element: 10
+Pushed ele : 10
+
+ Stack Menu 
+1. Push one element
+2. Push two elements
+3. Pop one element
+4. Pop multiple elements
+5. Display full stack
+6. Display top n elements
+7. Exit
+Enter choice: 2
+Enter thetwo elements: 20 30
+Pushed ele : 20
+Pushed ele : 30
+
+ Stack Menu 
+1. Push one element
+2. Push two elements
+3. Pop one element
+4. Pop multiple elements
+5. Display full stack
+6. Display top n elements
+7. Exit
+Enter choice: 5
+Stack contents (Top to Bottom):
+30
+20
+10
+
+ Stack Menu 
+1. Push one element
+2. Push two elements
+3. Pop one element
+4. Pop multiple elements
+5. Display full stack
+6. Display top n elements
+7. Exit
+Enter choice: 4
+Enter no of elements to pop: 1
+Popped ele: 30
+
+ Stack Menu 
+1. Push one element
+2. Push two elements
+3. Pop one element
+4. Pop multiple elements
+5. Display full stack
+6. Display top n elements
+7. Exit
+Enter choice: 6
+Enter no of top elements: 2
+Top 2 ele:
+20
+10
+
+ Stack Menu 
+1. Push one element
+2. Push two elements
+3. Pop one element
+4. Pop multiple elements
+5. Display full stack
+6. Display top n elements
+7. Exit
+Enter choice: 3
+Popped: 20
+
+ Stack Menu 
+1. Push one element
+2. Push two elements
+3. Pop one element
+4. Pop multiple elements
+5. Display full stack
+6. Display top n elements
+7. Exit
+Enter choice: 7
+Exiting..
+
+
+
+
