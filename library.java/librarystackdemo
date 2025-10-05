@@ -69,23 +69,19 @@ int option;
  System.out.print("Enter no of elements to pop: ");
  int n = sc.nextInt();
  st.pop(n);
-break;
-
- case 5:
+ break;
+case 5:
  st.display();
  break;
-
- case 6:
+case 6:
  System.out.print("Enter no of top elements: ");
  int topN = sc.nextInt();
  st.display(topN);
  break;
-
- case 7:
+case 7:
  System.out.println("Exiting..");
  break;
-
- default:
+default:
  System.out.println("Invalid choice");
  }
  } while(option != 7); 
