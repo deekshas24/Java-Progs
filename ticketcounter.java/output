@@ -1,0 +1,77 @@
+OUTPUT:
+
+Choose initialization:
+1. Empty stack with size
+2. Stack initialized with array of Persons
+
+1
+Enter size: 5
+
+--- Menu ---
+1. Push one Person
+2. Push two Persons
+3. Pop one Person
+4. Pop multiple Persons
+5. Display all Persons
+6. Display top n Persons
+7. Exit
+Enter your choice: 1
+Enter name: Deeksha
+Enter age: 19
+Enter gender (MALE/FEMALE/OTHER): FEMALE
+
+--- Menu ---
+1. Push one Person
+2. Push two Persons
+3. Pop one Person
+4. Pop multiple Persons
+5. Display all Persons
+6. Display top n Persons
+7. Exit
+Enter your choice: 2
+Enter name for Person 1: Diya
+Enter age: 15
+Enter gender (MALE/FEMALE/OTHER): FEMALE
+Enter name for Person 2: Kiran
+Enter age: 17
+Enter gender (MALE/FEMALE/OTHER): MALE
+
+--- Menu ---
+1. Push one Person
+2. Push two Persons
+3. Pop one Person
+4. Pop multiple Persons
+5. Display all Persons
+6. Display top n Persons
+7. Exit
+Enter your choice: 5
+Stack contents (top to bottom):
+Name: Kiran, Age: 17, Gender: MALE
+Name: Diya, Age: 15, Gender: FEMALE
+Name: Deeksha, Age: 19, Gender: FEMALE
+
+--- Menu ---
+1. Push one Person
+2. Push two Persons
+3. Pop one Person
+4. Pop multiple Persons
+5. Display all Persons
+6. Display top n Persons
+7. Exit
+Enter your choice: 3
+Popped Person: Name: Kiran, Age: 17, Gender: MALE
+
+--- Menu ---
+1. Push one Person
+2. Push two Persons
+3. Pop one Person
+4. Pop multiple Persons
+5. Display all Persons
+6. Display top n Persons
+7. Exit
+Enter your choice: 4
+Enter number of Persons to pop: 2
+Popped: Name: Diya, Age: 15, Gender: FEMALE
+Popped: Name: Deeksha, Age: 19, Gender: FEMALE
+
+
