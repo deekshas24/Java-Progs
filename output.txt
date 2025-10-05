@@ -1,0 +1,29 @@
+OUTPUT:
+
+Brand: kia
+Model: seltos
+Price: 2000000.0
+Mileage: 25.0
+Owner: Not Assigned
+
+Brand: kia
+Model: seltos
+Price: 2000000.0
+Mileage: 25.0
+Owner: n
+
+Brand: kia
+Model: seltos
+Price: 2000000.0
+Mileage: 25.0
+Owner: Not Assigned
+
+After Updating:
+Brand: kia
+Model: seltos
+Price: 16000.0
+Mileage: 25.0
+Owner: owner
+Showroom: city motors
+Total Cars: 3
+
