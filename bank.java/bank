@@ -1,10 +1,11 @@
 package bank;
+
 import java.util.HashMap;
+
 public class Bank {
 private HashMap<Integer, Double> accounts = new HashMap<>();
 public void createAccount(int accNo, double balance) {
 accounts.put(accNo, balance);
-
 System.out.println("Creating account " + accNo + " with " + balance);
 }
 public void deposit(int accNo, double amt) {
